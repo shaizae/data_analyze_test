@@ -1,7 +1,5 @@
-import matplotlib.pyplot as plt
 import pandas as pd
-import seaborn as sns
-from sklearn.preprocessing import LabelEncoder
+from tqdm import trange
 
 
 def _first_description(df: pd.DataFrame):
@@ -14,8 +12,9 @@ if __name__ == '__main__':
     events = pd.read_csv(r"events.csv")
     applicants = pd.read_csv(r"applicants.csv")
     sessions = pd.read_csv(r"sessions.csv")
-    encoder = LabelEncoder()
-    events["event_type"] = encoder.fit_transform(events["event_type"])
+    # encoder = LabelEncoder()
+    # events["event_type"] = encoder.fit_transform(events["event_type"])
 
-    sns.barplot(data=sessions, x="applicant_id", y="session_status")
-    plt.show()
+    sessions["gender"] = None
+    for i in trange(sessions.shape[0]):
+        sessions["gender", i] = applicants["gender", sessions["applicant_id"] == applicants["applicant_id"]]
