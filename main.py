@@ -14,10 +14,10 @@ if __name__ == '__main__':
     applicants = pd.read_csv(r"applicants.csv")
     sessions = pd.read_csv(r"sessions.csv")
 
-    sessions_and_aplicanst = pd.merge(sessions, applicants, on="applicant_id")
+    sessions_and_applicant = pd.merge(sessions, applicants, on="applicant_id")
 
-    # df=sessions_and_aplicanst.describe(include="all", exclude = None)
+    # df=sessions_and_applicant.describe(include="all", exclude = None)
     # encoder = LabelEncoder()
-    # sessions_and_aplicanst["agent_name"] = encoder.fit_transform(sessions_and_aplicanst["agent_name"])
-    sns.barplot(sessions_and_aplicanst, x="gender", y="session_status", hue="agent_name")
+    # sessions_and_applicant["agent_name"] = encoder.fit_transform(sessions_and_applicant["agent_name"])
+    sns.barplot(sessions_and_applicant, x="gender", y="session_status", hue="agent_name")
     plt.show()
