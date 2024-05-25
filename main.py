@@ -1,5 +1,6 @@
+import matplotlib.pyplot as plt
 import pandas as pd
-from tqdm import trange
+import seaborn as sns
 
 
 def _first_description(df: pd.DataFrame):
@@ -12,9 +13,11 @@ if __name__ == '__main__':
     events = pd.read_csv(r"events.csv")
     applicants = pd.read_csv(r"applicants.csv")
     sessions = pd.read_csv(r"sessions.csv")
-    # encoder = LabelEncoder()
-    # events["event_type"] = encoder.fit_transform(events["event_type"])
 
-    sessions["gender"] = None
-    for i in trange(sessions.shape[0]):
-        sessions["gender", i] = applicants["gender", sessions["applicant_id"] == applicants["applicant_id"]]
+    sessions_and_aplicanst = pd.merge(sessions, applicants, on="applicant_id")
+
+    # df=sessions_and_aplicanst.describe(include="all", exclude = None)
+    # encoder = LabelEncoder()
+    # sessions_and_aplicanst["agent_name"] = encoder.fit_transform(sessions_and_aplicanst["agent_name"])
+    sns.barplot(sessions_and_aplicanst, x="gender", y="session_status", hue="agent_name")
+    plt.show()
